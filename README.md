@@ -106,7 +106,7 @@ After you import, we can send 3 requests
 
 <img src="https://github.com/halilozel1903/HuaweiPushKitApp/blob/master/photos/huaweiPushKitPostman.png" width="300" />
 
-- Replace the **app_id** and **app_secret** values in the body with the App ID and App secret values on the application home page of the Huawei Console.
+- Replace the **app_id** and **app_secret** values in the body with the App ID and App secret values on the application home page of the Huawei Console. Replace the fields in the image below with the values in your own project.
 
 ![huaweiPushGallery](https://github.com/halilozel1903/HuaweiPushKitApp/blob/master/photos/huaweiPushGallery.png)
 
