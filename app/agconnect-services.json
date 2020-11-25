@@ -1,0 +1,14 @@
+{
+	"client":{
+		"appType":"1",
+		"cp_id":"5190090000027633872",
+		"product_id":"736430079244669678",
+		"client_id":"474861686713484480",
+		"client_secret":"5D200CF0B264B6D65C9ACE2E72D83497EE869E4E2061D08D4B74B6526838017F",
+		"project_id":"736430079244669678",
+		"app_id":"103346107",
+		"api_key":"CgB6e3x9hHAXbbc/p3i9UX3A/KsMMUn6b3lSK8cV8FMCzC2rz6jitlqQXnVaw5EycgSEW6EAgaJNfxYEI63vheA9",
+		"package_name":"com.halil.ozel.huaweipushkitapp"
+	},
+	"configuration_version":"1.0"
+}
