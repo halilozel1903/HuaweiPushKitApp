@@ -1,4 +1,4 @@
-## Huawei Push Kit
+## Huawei Push Kit 🛠
 
 Hello everyone, Today we will learn Huawei Push Kit.
 
@@ -6,7 +6,7 @@ Hello everyone, Today we will learn Huawei Push Kit.
 
 https://github.com/halilozel1903/HuaweiMapKitApp
 
-## What is Huawei Push Kit?
+## What is Huawei Push Kit ⁉️
 
 ![Huawei](https://github.com/halilozel1903/HuaweiPushKitApp/blob/master/photos/huawei-push-kit-doc.jpeg)
 
@@ -16,7 +16,7 @@ Currently, Push Kit has been supported in mobile phones, tablets, HUAWEI Vision,
 
 For more : https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/android-sdk-introduction-0000001050158633
 
-## How to use Huawei Push Kit?
+## How to use Huawei Push Kit 📌
 
 You can follow the steps in this blog post.
 
@@ -93,7 +93,7 @@ We have done all the necessary actions. Congratulations 🥳 You have developed 
 
 <br>
 
-## Testing with Postman
+## Testing with Postman 📨
 
 You can test the application with Postman by following the steps below.
 
@@ -132,7 +132,7 @@ When we follow the steps above and make a request, we will have successfully see
 
 <br>
 
-## Recourses
+## Recourses 📚
 
 1. https://developer.huawei.com/consumer/en/codelab/HMSPushKit/
 
@@ -142,11 +142,11 @@ When we follow the steps above and make a request, we will have successfully see
 
 <br>
 
-## License
+## License ℹ️
 ```
 MIT License
 
-Copyright (c) 2020 Halil Ozel
+Copyright (c) 2021 Halil OZEL
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
