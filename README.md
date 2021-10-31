@@ -53,22 +53,21 @@ In this step, we will be able to learn the token value we need when we integrate
 - We create a function in Main Activity. We define an instance to get the token value.
 
 ```kotlin
-    private fun getToken() {
-        object : Thread() {
-            override fun run() {
-                try {
-                    val appId =
-                        AGConnectServicesConfig.fromContext(this@MainActivity)
-                            .getString("client/app_id")
-                    val token = HmsInstanceId.getInstance(this@MainActivity)
-                        .getToken(appId, "HCM")
-                    Log.i("PUSH", "getToken() token: $token")
-                } catch (e: ApiException) {
-                    Log.e("PUSH", "getToken() failure: " + e.message)
-                }
-            }
-        }.start()
-    }
+       private fun getToken() {
+           object : Thread() {
+               override fun run() {
+                   try {
+                       val appId = AGConnectOptionsBuilder().build(this@MainActivity)
+                           .getString("client/app_id")
+                       val token = HmsInstanceId.getInstance(this@MainActivity)
+                           .getToken(appId, "HCM")
+                       Log.i("PUSH", "getToken() token: $token")
+                   } catch (e: ApiException) {
+                       Log.e("PUSH", "getToken() failure: ${e.message}")
+                   }
+               }
+           }.start()
+       }
 ```
 
 We run the application. The token value is displayed in the log section.
