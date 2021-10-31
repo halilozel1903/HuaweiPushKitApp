@@ -1,5 +1,6 @@
 package com.halil.ozel.huaweipushkitapp
 
+import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.PendingIntent
 import android.content.Intent
@@ -12,6 +13,7 @@ import com.huawei.hms.push.RemoteMessage
 
 class HuaweiPushService : HmsMessageService() {
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
         Log.i(TAG, "onMessageReceived()")
@@ -25,24 +27,24 @@ class HuaweiPushService : HmsMessageService() {
         val text = notificationData["text"]
         var channelId = notificationData["channel_id"]
         if (channelId == null) {
-            channelId = Constant.NotificationChannel2.ID
+            channelId = Constants.NotificationChannel2.ID
         }
-        if (channelId != Constant.NotificationChannel1.ID) {
-            channelId = Constant.NotificationChannel2.ID
+        if (channelId != Constants.NotificationChannel1.ID) {
+            channelId = Constants.NotificationChannel2.ID
         }
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
         val notificationManager = NotificationManagerCompat.from(this)
         val notification: Notification = NotificationCompat.Builder(this, channelId)
-                .setSmallIcon(icon)
-                .setContentTitle(title)
-                .setContentText(text)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
-                .setOnlyAlertOnce(true)
-                .setColor(this.resources.getColor(R.color.black))
-                .build()
+            .setSmallIcon(icon)
+            .setContentTitle(title)
+            .setContentText(text)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+            .setOnlyAlertOnce(true)
+            .setColor(this.resources.getColor(R.color.black, null))
+            .build()
         notificationManager.notify(1, notification)
     }
 

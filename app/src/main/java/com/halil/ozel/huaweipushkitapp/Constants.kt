@@ -1,6 +1,6 @@
 package com.halil.ozel.huaweipushkitapp
 
-interface Constant {
+interface Constants {
     interface NotificationChannel1 {
         companion object {
             const val ID = "channel_1"
