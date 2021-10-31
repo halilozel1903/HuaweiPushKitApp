@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HuaweiPushKitApp</string>
+    <string name="message_text">Welcome to Push Kit App!!!</string>
 </resources>
