@@ -126,7 +126,7 @@ After you import, we can send 3 requests
 
 When we follow the steps above and make a request, we will have successfully seen our notifications on the screen.
 
-<img src="https://github.com/halilozel1903/HuaweiPushKitApp/blob/master/photos/huaweiPushScreen2.png" width="300" /><img src="https://github.com/halilozel1903/HuaweiPushKitApp/blob/master/photos/huaweiPushScreen1.png" width="300" />
+<img src="https://github.com/halilozel1903/HuaweiPushKitApp/blob/master/photos/huaweiPushScreen2.png" width="300" /> <img src="https://github.com/halilozel1903/HuaweiPushKitApp/blob/master/photos/huaweiPushScreen1.png" width="300" />
 
 
 <br>
