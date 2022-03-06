@@ -20,7 +20,6 @@ For more : https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guid
 
 You can follow the steps in this blog post.
 
-
 The steps we need to integrate for **Push Kit** are as follows.
 
 - We activate Push Kit from the Manage API section
@@ -145,7 +144,7 @@ When we follow the steps above and make a request, we will have successfully see
 ```
 MIT License
 
-Copyright (c) 2021 Halil OZEL
+Copyright (c) 2022 Halil OZEL
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
