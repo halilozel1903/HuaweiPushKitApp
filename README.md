@@ -45,7 +45,7 @@ In this step, we will be able to learn the token value we need when we integrate
 - Push Kit added in **build.gradle(:app)**
 
  ```kotlin
- implementation 'com.huawei.hms:push:5.0.0.300'
+ implementation 'com.huawei.hms:push:6.1.0.300'
  ```
 
 
@@ -69,17 +69,17 @@ In this step, we will be able to learn the token value we need when we integrate
        }
 ```
 
-We run the application. The token value is displayed in the log section.
+Run the application. The token value is displayed in the log section.
 
 ![HuaweiPushKToken](https://github.com/halilozel1903/HuaweiPushKitApp/blob/master/photos/huaweiPushKitToken.png)
 
 
-We put this token value in the field in the Push Kit test.
+Put this token value in the field in the Push Kit test.
 
 ![HuaweiPushTest](https://github.com/halilozel1903/HuaweiPushKitApp/blob/master/photos/huawei-push-kit-test.png)
 
 
-We will test the application with Cloud Debugging.You can run the application by following the below document.
+It will test the application with Cloud Debugging.You can run the application by following the below document.
 
 https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-clouddebug-realtimedebug
 
@@ -88,8 +88,6 @@ We have done all the necessary actions. Congratulations 🥳 You have developed 
 
 <img src="https://github.com/halilozel1903/HuaweiPushKitApp/blob/master/photos/huawei-push-kit-screen.png" width="300" />
 
-
-<br>
 
 ## Testing with Postman 📨
 
@@ -128,8 +126,6 @@ When we follow the steps above and make a request, we will have successfully see
 <img src="https://github.com/halilozel1903/HuaweiPushKitApp/blob/master/photos/huaweiPushScreen2.png" width="300" /> <img src="https://github.com/halilozel1903/HuaweiPushKitApp/blob/master/photos/huaweiPushScreen1.png" width="300" />
 
 
-<br>
-
 ## Recourses 📚
 
 1. https://developer.huawei.com/consumer/en/codelab/HMSPushKit/
@@ -138,7 +134,11 @@ When we follow the steps above and make a request, we will have successfully see
 
 3. https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/push-console
 
-<br>
+## Donation 💸
+
+If this project help 💁 you to develop, you can give me a cup of coffee. ☕
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/halilozel1903)
 
 ## License ℹ️
 ```

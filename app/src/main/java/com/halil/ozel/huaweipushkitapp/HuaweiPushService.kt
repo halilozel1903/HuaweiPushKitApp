@@ -27,10 +27,10 @@ class HuaweiPushService : HmsMessageService() {
         val text = notificationData["text"]
         var channelId = notificationData["channel_id"]
         if (channelId == null) {
-            channelId = Constants.NotificationChannel2.ID
+            channelId = Constants.NotificationChannelTwo.ID
         }
-        if (channelId != Constants.NotificationChannel1.ID) {
-            channelId = Constants.NotificationChannel2.ID
+        if (channelId != Constants.NotificationChannelOne.ID) {
+            channelId = Constants.NotificationChannelTwo.ID
         }
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

@@ -1,7 +1,7 @@
 package com.halil.ozel.huaweipushkitapp
 
 interface Constants {
-    interface NotificationChannel1 {
+    interface NotificationChannelOne {
         companion object {
             const val ID = "channel_1"
             const val NAME = "Channel 1"
@@ -9,7 +9,7 @@ interface Constants {
         }
     }
 
-    interface NotificationChannel2 {
+    interface NotificationChannelTwo {
         companion object {
             const val ID = "channel_2"
             const val NAME = "Channel 2"
