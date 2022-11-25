@@ -22,9 +22,10 @@ class App : Application() {
                 NotificationManager.IMPORTANCE_LOW
             )
             channelTwo.description = Constants.NotificationChannelTwo.DESCRIPTION
-            val manager: NotificationManager = getSystemService(NotificationManager::class.java)
-            manager.createNotificationChannel(channelOne)
-            manager.createNotificationChannel(channelTwo)
+            getSystemService(NotificationManager::class.java).apply {
+                createNotificationChannel(channelOne)
+                createNotificationChannel(channelTwo)
+            }
         }
     }
 }
