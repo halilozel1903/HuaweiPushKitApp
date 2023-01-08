@@ -23,9 +23,9 @@ class HuaweiPushService : HmsMessageService() {
             return
         }
         val icon = R.mipmap.ic_launcher
-        val title = notificationData["title"]
-        val text = notificationData["text"]
-        var channelId = notificationData["channel_id"]
+        val title = notificationData[TITLE]
+        val text = notificationData[TEXT]
+        var channelId = notificationData[CHANNEL_ID]
         if (channelId == null) {
             channelId = Constants.NotificationChannelTwo.ID
         }
@@ -50,5 +50,8 @@ class HuaweiPushService : HmsMessageService() {
 
     companion object {
         private const val TAG = "HuaweiPushService"
+        private const val TITLE = "title"
+        private const val TEXT = "text"
+        private const val CHANNEL_ID = "channel_id"
     }
 }
