@@ -19,14 +19,20 @@ class MainActivity : AppCompatActivity() {
             override fun run() {
                 try {
                     val appId = AGConnectOptionsBuilder().build(this@MainActivity)
-                        .getString("client/app_id")
+                        .getString(APP_ID)
                     val token = HmsInstanceId.getInstance(this@MainActivity)
-                        .getToken(appId, "HCM")
-                    Log.i("PUSH", "getToken() token: $token")
+                        .getToken(appId, HCM)
+                    Log.i(TAG, "getToken() token: $token")
                 } catch (e: ApiException) {
-                    Log.e("PUSH", "getToken() failure: ${e.message}")
+                    Log.e(TAG, "getToken() failure: ${e.message}")
                 }
             }
         }.start()
+    }
+
+    companion object {
+        private const val TAG = "PUSH"
+        private const val HCM = "HCM"
+        private const val APP_ID = "client/app_id"
     }
 }
