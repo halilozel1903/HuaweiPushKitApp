@@ -45,7 +45,7 @@ In this step, we will be able to learn the token value we need when we integrate
 - Push Kit added in **build.gradle(:app)**
 
  ```kotlin
- implementation 'com.huawei.hms:push:6.1.0.300'
+ implementation 'com.huawei.hms:push:6.13.0.301'
  ```
 
 
