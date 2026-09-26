@@ -5,11 +5,11 @@ plugins {
 
 
 android {
+    compileSdk 36
     defaultConfig {
-        compileSdk 34
         applicationId "com.halil.ozel.huaweipushkitapp"
         minSdkVersion 24
-        targetSdkVersion 34
+        targetSdkVersion 36
         versionCode 1
         versionName "1.0"
 
