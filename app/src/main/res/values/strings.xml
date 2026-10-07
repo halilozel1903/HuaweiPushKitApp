@@ -23,4 +23,11 @@
     <string name="status_push_on">Push delivery is on</string>
     <string name="status_push_off">Push delivery is off</string>
     <string name="status_push_failed">Push setting failed: %1$s</string>
+    <string name="messages_label">Received messages</string>
+    <string name="messages_empty">No messages yet. Data messages appear here and in the notification shade.</string>
+    <string name="clear_messages">Clear log</string>
+    <string name="status_log_cleared">Message log cleared</string>
+    <string name="message_untitled">(no title)</string>
+    <string name="message_no_body">(no body)</string>
+    <string name="message_entry">%1$s · %2$s · %3$s\n%4$s\n%5$s</string>
 </resources>

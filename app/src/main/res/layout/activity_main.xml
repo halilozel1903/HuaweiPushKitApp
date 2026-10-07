@@ -93,5 +93,25 @@
             android:layout_marginTop="8dp"
             android:text="@string/status_idle" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/messages_label"
+            android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+        <TextView
+            android:id="@+id/messageLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/messages_empty" />
+
+        <Button
+            android:id="@+id/clearMessages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_messages" />
+
     </LinearLayout>
 </ScrollView>
