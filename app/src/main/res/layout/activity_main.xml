@@ -46,6 +46,34 @@
             android:text="@string/delete_token" />
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/topic_label"
+            android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+        <EditText
+            android:id="@+id/topicInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/topic_hint"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:text="@string/topic_default" />
+
+        <Button
+            android:id="@+id/subscribeTopic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/subscribe_topic" />
+
+        <Button
+            android:id="@+id/unsubscribeTopic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/unsubscribe_topic" />
+
+        <TextView
             android:id="@+id/statusText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

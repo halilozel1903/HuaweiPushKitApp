@@ -9,4 +9,13 @@
     <string name="status_token_ready">Token updated</string>
     <string name="status_token_deleted">Token deleted</string>
     <string name="status_token_failed">Token request failed: %1$s</string>
+    <string name="topic_label">Topic</string>
+    <string name="topic_hint">Topic name</string>
+    <string name="topic_default">weather</string>
+    <string name="subscribe_topic">Subscribe</string>
+    <string name="unsubscribe_topic">Unsubscribe</string>
+    <string name="status_subscribed">Subscribed to %1$s</string>
+    <string name="status_unsubscribed">Unsubscribed from %1$s</string>
+    <string name="status_topic_failed">Topic request failed: %1$s</string>
+    <string name="status_topic_invalid">Topic names use letters, digits, and -_.~% only.</string>
 </resources>

@@ -3,11 +3,13 @@ package com.halil.ozel.huaweipushkitapp
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.huawei.agconnect.AGConnectOptionsBuilder
 import com.huawei.hms.aaid.HmsInstanceId
 import com.huawei.hms.common.ApiException
+import com.huawei.hms.push.HmsMessaging
 
 class MainActivity : AppCompatActivity() {
     private lateinit var store: PushStore
@@ -28,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         statusText = findViewById(R.id.statusText)
         findViewById<Button>(R.id.refreshToken).setOnClickListener { refreshToken() }
         findViewById<Button>(R.id.deleteToken).setOnClickListener { deleteToken() }
+        findViewById<Button>(R.id.subscribeTopic).setOnClickListener { changeTopic(subscribe = true) }
+        findViewById<Button>(R.id.unsubscribeTopic).setOnClickListener { changeTopic(subscribe = false) }
         showToken()
     }
 
@@ -84,8 +88,35 @@ class MainActivity : AppCompatActivity() {
         }.start()
     }
 
+    private fun changeTopic(subscribe: Boolean) {
+        val topic = findViewById<EditText>(R.id.topicInput).text.toString().trim()
+        if (!TOPIC.matches(topic)) {
+            statusText.setText(R.string.status_topic_invalid)
+            return
+        }
+        val task = if (subscribe) {
+            HmsMessaging.getInstance(this).subscribe(topic)
+        } else {
+            HmsMessaging.getInstance(this).unsubscribe(topic)
+        }
+        task.addOnCompleteListener { completed ->
+            if (completed.isSuccessful) {
+                statusText.text = getString(
+                    if (subscribe) R.string.status_subscribed else R.string.status_unsubscribed,
+                    topic,
+                )
+            } else {
+                statusText.text = getString(
+                    R.string.status_topic_failed,
+                    completed.exception?.message ?: "",
+                )
+            }
+        }
+    }
+
     companion object {
         private const val HCM = "HCM"
         private const val APP_ID = "client/app_id"
+        private val TOPIC = Regex("[a-zA-Z0-9\\-_.~%]{1,900}")
     }
 }
