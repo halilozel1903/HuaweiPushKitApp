@@ -88,6 +88,52 @@ fun dataMessageBody(
     """.trimIndent()
 }
 
+fun topicNotificationBody(
+    title: String,
+    body: String,
+    topic: String,
+    validateOnly: Boolean,
+): String {
+    return """
+        {
+          "validate_only": $validateOnly,
+          "message": {
+            "notification": {
+              "title": ${jsonString(title)},
+              "body": ${jsonString(body)}
+            },
+            "android": {
+              "notification": {
+                "click_action": {
+                  "type": 3
+                }
+              }
+            },
+            "topic": ${jsonString(topic)}
+          }
+        }
+    """.trimIndent()
+}
+
+fun topicDataBody(
+    title: String,
+    text: String,
+    channelId: String,
+    topic: String,
+    validateOnly: Boolean,
+): String {
+    val data = """{"title":${jsonString(title)},"text":${jsonString(text)},"channel_id":${jsonString(channelId)}}"""
+    return """
+        {
+          "validate_only": $validateOnly,
+          "message": {
+            "data": ${jsonString(data)},
+            "topic": ${jsonString(topic)}
+          }
+        }
+    """.trimIndent()
+}
+
 fun extractJsonString(json: String, field: String): String? {
     val pattern = Regex(""""${Regex.escape(field)}"\s*:\s*"((?:\\.|[^"\\])*)"""")
     val raw = pattern.find(json)?.groupValues?.get(1) ?: return null

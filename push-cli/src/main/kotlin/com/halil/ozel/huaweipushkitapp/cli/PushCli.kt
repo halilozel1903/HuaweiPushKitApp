@@ -66,6 +66,7 @@ class PushCli(
             "token" -> accessToken(options)
             "notify" -> sendNotification(options)
             "data" -> sendData(options)
+            "topic" -> sendTopic(options)
             else -> {
                 stderr.append("Unknown command: $command\n")
                 stderr.append(HELP)
@@ -118,10 +119,40 @@ class PushCli(
         return send(options, payload)
     }
 
+    private fun sendTopic(options: Options): Int {
+        val topic = options.values["topic"].orEmpty()
+        if (!TOPIC.matches(topic)) {
+            stderr.append("topic requires --topic using letters, digits, and -_.~%.\n")
+            return USAGE
+        }
+        val title = options.values["title"]
+        if (title.isNullOrBlank()) {
+            stderr.append("topic requires --title.\n")
+            return USAGE
+        }
+        val text = options.values["text"]
+        val payload = if (!text.isNullOrBlank()) {
+            val channelId = options.values["channel"] ?: DEFAULT_CHANNEL
+            topicDataBody(title, text, channelId, topic, options.validateOnly)
+        } else {
+            val body = options.values["body"]
+            if (body.isNullOrBlank()) {
+                stderr.append("topic requires --body, or --text for a data message.\n")
+                return USAGE
+            }
+            topicNotificationBody(title, body, topic, options.validateOnly)
+        }
+        return sendPayload(options, payload)
+    }
+
     private fun send(options: Options, payload: (String) -> String): Int {
+        val pushToken = options.require("push-token", "HUAWEI_PUSH_TOKEN") ?: return USAGE
+        return sendPayload(options, payload(pushToken))
+    }
+
+    private fun sendPayload(options: Options, payload: String): Int {
         val appId = options.require("app-id", "HUAWEI_APP_ID") ?: return USAGE
         val appSecret = options.require("app-secret", "HUAWEI_APP_SECRET") ?: return USAGE
-        val pushToken = options.require("push-token", "HUAWEI_PUSH_TOKEN") ?: return USAGE
         if (!APP_ID.matches(appId)) {
             stderr.append("app-id must be the numeric AppGallery Connect app id.\n")
             return USAGE
@@ -131,7 +162,7 @@ class PushCli(
             val result = http.post(
                 url = options.region.sendUrl(appId),
                 contentType = "application/json; charset=UTF-8",
-                body = payload(pushToken),
+                body = payload,
                 headers = mapOf("Authorization" to "Bearer $accessToken"),
             )
             stdout.append(result.body).append('\n')
@@ -236,20 +267,32 @@ class PushCli(
         const val SUCCESS_CODE = "80000000"
         const val DEFAULT_CHANNEL = "channel_1"
         val APP_ID = Regex("\\d+")
-        val FLAGS = setOf("app-id", "app-secret", "push-token", "title", "body", "text", "channel")
+        val TOPIC = Regex("[a-zA-Z0-9\\-_.~%]{1,900}")
+        val FLAGS = setOf(
+            "app-id",
+            "app-secret",
+            "push-token",
+            "title",
+            "body",
+            "text",
+            "channel",
+            "topic",
+        )
         val HELP = """
             Push Kit CLI for this sample. Credentials are flags or environment variables.
             Do not commit an app secret or push token.
 
             Commands:
               token    Request an OAuth access token
-              notify   Send a notification message
+              notify   Send a notification message to one device token
               data     Send a data message the app displays itself
+              topic    Send a notification, or a data message when --text is set, to a topic
 
             Options:
               --app-id        AppGallery Connect app id (or HUAWEI_APP_ID)
               --app-secret    App secret (or HUAWEI_APP_SECRET)
               --push-token    Device push token (or HUAWEI_PUSH_TOKEN)
+              --topic         Topic name for the topic command
               --title         Notification or data title
               --body          Notification body
               --text          Data message text
@@ -261,6 +304,7 @@ class PushCli(
               ./gradlew :push-cli:run --args="token --app-id 123 --app-secret SECRET"
               ./gradlew :push-cli:run --args="notify --app-id 123 --app-secret SECRET --push-token TOKEN --title Hi --body Hello"
               ./gradlew :push-cli:run --args="data --app-id 123 --app-secret SECRET --push-token TOKEN --title Hi --text Hello"
+              ./gradlew :push-cli:run --args="topic --app-id 123 --app-secret SECRET --topic weather --title Hi --text Hello"
 
         """.trimIndent()
     }

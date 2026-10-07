@@ -93,6 +93,44 @@ class PushCliTest {
     }
 
     @Test
+    fun topicDataMessageOmitsTheDeviceToken() {
+        val json = topicDataBody(
+            title = "Hi",
+            text = "there",
+            channelId = "channel_1",
+            topic = "weather",
+            validateOnly = false,
+        )
+        assertTrue(json.contains("\"topic\": \"weather\""))
+        assertTrue(!json.contains("\"token\""))
+        assertEquals(
+            """{"title":"Hi","text":"there","channel_id":"channel_1"}""",
+            extractJsonString(json, "data"),
+        )
+    }
+
+    @Test
+    fun topicCommandSendsWithoutADeviceToken() {
+        val http = FakeHttp(
+            HttpResult(200, """{"access_token":"abc"}"""),
+            HttpResult(200, """{"code":"80000000","msg":"Success"}"""),
+        )
+        val code = PushCli(http = http, stdout = StringBuilder(), stderr = StringBuilder()).run(
+            arrayOf(
+                "topic",
+                "--app-id", "123456789",
+                "--app-secret", "secret",
+                "--topic", "weather",
+                "--title", "Hi",
+                "--body", "Hello",
+            ),
+        )
+        assertEquals(0, code)
+        assertTrue(http.calls[1].body.contains("\"topic\": \"weather\""))
+        assertTrue(!http.calls[1].body.contains("push-token"))
+    }
+
+    @Test
     fun missingCredentialsDoesNotCallTheNetwork() {
         val http = FakeHttp()
         val code = PushCli(http = http, stdout = StringBuilder(), stderr = StringBuilder()).run(
