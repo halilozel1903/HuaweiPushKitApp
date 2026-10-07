@@ -18,4 +18,9 @@
     <string name="status_unsubscribed">Unsubscribed from %1$s</string>
     <string name="status_topic_failed">Topic request failed: %1$s</string>
     <string name="status_topic_invalid">Topic names use letters, digits, and -_.~% only.</string>
+    <string name="turn_on_push">Turn push on</string>
+    <string name="turn_off_push">Turn push off</string>
+    <string name="status_push_on">Push delivery is on</string>
+    <string name="status_push_off">Push delivery is off</string>
+    <string name="status_push_failed">Push setting failed: %1$s</string>
 </resources>

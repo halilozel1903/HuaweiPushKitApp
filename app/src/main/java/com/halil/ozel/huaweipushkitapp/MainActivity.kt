@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.deleteToken).setOnClickListener { deleteToken() }
         findViewById<Button>(R.id.subscribeTopic).setOnClickListener { changeTopic(subscribe = true) }
         findViewById<Button>(R.id.unsubscribeTopic).setOnClickListener { changeTopic(subscribe = false) }
+        findViewById<Button>(R.id.turnOnPush).setOnClickListener { setPushEnabled(true) }
+        findViewById<Button>(R.id.turnOffPush).setOnClickListener { setPushEnabled(false) }
         showToken()
     }
 
@@ -108,6 +110,24 @@ class MainActivity : AppCompatActivity() {
             } else {
                 statusText.text = getString(
                     R.string.status_topic_failed,
+                    completed.exception?.message ?: "",
+                )
+            }
+        }
+    }
+
+    private fun setPushEnabled(enabled: Boolean) {
+        val task = if (enabled) {
+            HmsMessaging.getInstance(this).turnOnPush()
+        } else {
+            HmsMessaging.getInstance(this).turnOffPush()
+        }
+        task.addOnCompleteListener { completed ->
+            if (completed.isSuccessful) {
+                statusText.setText(if (enabled) R.string.status_push_on else R.string.status_push_off)
+            } else {
+                statusText.text = getString(
+                    R.string.status_push_failed,
                     completed.exception?.message ?: "",
                 )
             }

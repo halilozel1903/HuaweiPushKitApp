@@ -73,6 +73,19 @@
             android:layout_height="wrap_content"
             android:text="@string/unsubscribe_topic" />
 
+        <Button
+            android:id="@+id/turnOnPush"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/turn_on_push" />
+
+        <Button
+            android:id="@+id/turnOffPush"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/turn_off_push" />
+
         <TextView
             android:id="@+id/statusText"
             android:layout_width="match_parent"
