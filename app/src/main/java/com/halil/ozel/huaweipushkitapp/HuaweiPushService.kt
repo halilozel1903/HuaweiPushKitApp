@@ -6,6 +6,7 @@ import android.app.Notification
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Bundle
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
@@ -55,6 +56,23 @@ class HuaweiPushService : HmsMessageService() {
         ) {
             notificationManager.notify(1, notification)
         }
+    }
+
+    override fun onNewToken(token: String) {
+        super.onNewToken(token)
+        Log.i(TAG, "onNewToken()")
+        PushStore(this).saveToken(token)
+    }
+
+    override fun onNewToken(token: String, bundle: Bundle) {
+        super.onNewToken(token, bundle)
+        Log.i(TAG, "onNewToken()")
+        PushStore(this).saveToken(token)
+    }
+
+    override fun onTokenError(exception: Exception) {
+        super.onTokenError(exception)
+        Log.e(TAG, "onTokenError: ${exception.message}")
     }
 
     companion object {
