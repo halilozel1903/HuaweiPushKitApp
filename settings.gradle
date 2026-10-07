@@ -1,2 +1,3 @@
 include ':app'
+include ':push-cli'
 rootProject.name = "HuaweiPushKitApp"
