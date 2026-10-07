@@ -1,4 +1,33 @@
 <resources>
     <string name="app_name">HuaweiPushKitApp</string>
     <string name="message_text">Welcome to Push Kit App!!!</string>
+    <string name="token_label">Push token</string>
+    <string name="token_empty">No token yet. Refresh after HMS Core is available.</string>
+    <string name="refresh_token">Refresh token</string>
+    <string name="delete_token">Delete token</string>
+    <string name="status_idle">Ready</string>
+    <string name="status_token_ready">Token updated</string>
+    <string name="status_token_deleted">Token deleted</string>
+    <string name="status_token_failed">Token request failed: %1$s</string>
+    <string name="topic_label">Topic</string>
+    <string name="topic_hint">Topic name</string>
+    <string name="topic_default">weather</string>
+    <string name="subscribe_topic">Subscribe</string>
+    <string name="unsubscribe_topic">Unsubscribe</string>
+    <string name="status_subscribed">Subscribed to %1$s</string>
+    <string name="status_unsubscribed">Unsubscribed from %1$s</string>
+    <string name="status_topic_failed">Topic request failed: %1$s</string>
+    <string name="status_topic_invalid">Topic names use letters, digits, and -_.~% only.</string>
+    <string name="turn_on_push">Turn push on</string>
+    <string name="turn_off_push">Turn push off</string>
+    <string name="status_push_on">Push delivery is on</string>
+    <string name="status_push_off">Push delivery is off</string>
+    <string name="status_push_failed">Push setting failed: %1$s</string>
+    <string name="messages_label">Received messages</string>
+    <string name="messages_empty">No messages yet. Data messages appear here and in the notification shade.</string>
+    <string name="clear_messages">Clear log</string>
+    <string name="status_log_cleared">Message log cleared</string>
+    <string name="message_untitled">(no title)</string>
+    <string name="message_no_body">(no body)</string>
+    <string name="message_entry">%1$s · %2$s · %3$s\n%4$s\n%5$s</string>
 </resources>

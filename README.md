@@ -89,16 +89,29 @@ We have done all the necessary actions. Congratulations 🥳 You have developed 
 <img src="https://github.com/halilozel1903/HuaweiPushKitApp/blob/master/photos/huawei-push-kit-screen.png" width="300" />
 
 
+## On the device 📱
+
+The main screen uses the Push Kit client APIs, not only a log line.
+
+- **Token.** Refresh calls `HmsInstanceId.getToken`. Delete calls `deleteToken`. `HuaweiPushService.onNewToken` writes the new token into the screen when HMS Core rotates it.
+- **Topics.** Subscribe and unsubscribe use `HmsMessaging`. The default topic is `weather`. Names may contain letters, digits, and `-_.~%`.
+- **Delivery.** Turn push on and turn push off call `turnOnPush` and `turnOffPush`.
+- **Messages.** A data message with `channel_id` `channel_1` uses the high-importance channel. Any other channel id uses the low-importance channel. The app posts that notification when notification permission is granted, and keeps the latest messages on screen. A notification message that arrives while the app is in the foreground is shown the same way, because Push Kit does not display it automatically then.
+
+Allow notifications when the system asks. Copy the token from the screen into the CLI or Postman. Subscribe to `weather` before sending a topic message.
+
 ## Push Kit CLI ⌨️
 
-`push-cli` sends the same requests as the Postman collection: an OAuth access token, a notification, or a data message. The data message uses `title`, `text`, and `channel_id`, which `HuaweiPushService` reads. The default region is Germany, matching the data storage location chosen for this sample. `--region china` uses the host in the Postman collection.
+`push-cli` sends the same requests as the Postman collection: an OAuth access token, a notification, a data message, or a message to a topic. The data message uses `title`, `text`, and `channel_id`, which `HuaweiPushService` reads. `topic` with `--body` sends a notification to every subscribed device. `topic` with `--text` sends a data message to that topic instead. The default region is Germany, matching the data storage location chosen for this sample. `--region china` uses the host in the Postman collection.
 
 Do not commit the app secret or a device token. Pass them as flags or environment variables (`HUAWEI_APP_ID`, `HUAWEI_APP_SECRET`, `HUAWEI_PUSH_TOKEN`).
 
 ```bash
+./gradlew :push-cli:run --args="--help"
 ./gradlew :push-cli:run --args="token --app-id YOUR_APP_ID --app-secret YOUR_APP_SECRET"
 ./gradlew :push-cli:run --args="notify --app-id YOUR_APP_ID --app-secret YOUR_APP_SECRET --push-token YOUR_PUSH_TOKEN --title Hi --body Hello"
 ./gradlew :push-cli:run --args="data --app-id YOUR_APP_ID --app-secret YOUR_APP_SECRET --push-token YOUR_PUSH_TOKEN --title Hi --text Hello --channel channel_1"
+./gradlew :push-cli:run --args="topic --app-id YOUR_APP_ID --app-secret YOUR_APP_SECRET --topic weather --title Hi --text Hello"
 ```
 
 `--validate-only` asks Push Kit to check the message without delivering it. `./gradlew :push-cli:test` runs the local checks.

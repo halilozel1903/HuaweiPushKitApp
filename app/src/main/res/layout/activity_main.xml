@@ -1,18 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/message_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/message_text"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/token_label"
+            android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+        <TextView
+            android:id="@+id/tokenValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textIsSelectable="true"
+            android:text="@string/token_empty" />
+
+        <Button
+            android:id="@+id/refreshToken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/refresh_token" />
+
+        <Button
+            android:id="@+id/deleteToken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_token" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/topic_label"
+            android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+        <EditText
+            android:id="@+id/topicInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/topic_hint"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:text="@string/topic_default" />
+
+        <Button
+            android:id="@+id/subscribeTopic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/subscribe_topic" />
+
+        <Button
+            android:id="@+id/unsubscribeTopic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/unsubscribe_topic" />
+
+        <Button
+            android:id="@+id/turnOnPush"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/turn_on_push" />
+
+        <Button
+            android:id="@+id/turnOffPush"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/turn_off_push" />
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/status_idle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/messages_label"
+            android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+        <TextView
+            android:id="@+id/messageLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/messages_empty" />
+
+        <Button
+            android:id="@+id/clearMessages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_messages" />
+
+    </LinearLayout>
+</ScrollView>
